@@ -116,6 +116,50 @@ public class ASearchStarApp {
 		return nb;
 	}
 	
+	public static ArrayList<Node> search2(Node source, Node destiny) {
+		ArrayList<Node> path = new ArrayList<>();
+		open2.add(source);
+		source.visited = true;
+		Heuristic euclian = new EuclidianHeuristic();
+		while(!open2.isEmpty()) {
+			Node curr = open2.peek();
+			if(curr.equals(destiny)) {
+				// fazer o caminho reverso para verificar qual caminho foi feito
+				Node node = curr;
+				while(node.parent != null) {
+					path.add(node);
+					node = node.parent;
+				}
+				break;
+			}
+			
+			open2.poll();
+			close.add(curr);
+			ArrayList<Node> neighboors = getNeighbors(curr);
+			for(Node neighboor : neighboors) {
+				if(close.contains(neighboor))		// no ja visitado
+					continue;
+				double gScore = curr.g + neighboor.cost;
+				int x = neighboor.x,  y = neighboor.y;
+				boolean beenVisited = neighboor.visited;
+				// se esse vizinho ainda nao tinha sido visitado
+				// ou se ele ja foi porem por um caminho mais custoso
+				if( ! beenVisited || gScore < neighboor.g) {
+					neighboor.visited = true;
+					neighboor.parent = curr;
+					neighboor.h = euclian.heuristic(curr.x, curr.y, x, y);
+					neighboor.g = gScore;
+					neighboor.f = neighboor.g + neighboor.f;
+					// se ele nao tinha sido visitado, adiciona-lo na lista para um possivel caminho
+					if(!beenVisited) {
+						open2.add(neighboor);
+					}
+				}
+			}
+		}
+		return path;
+	}
+	
 	public static ArrayList<Node> search(Node source, Node destiny) {
 		ArrayList<Node> path = new ArrayList<>();
 		open.add(source);
@@ -166,7 +210,7 @@ public class ASearchStarApp {
 		init(10, 10);
 		Node s = new Node(0,0);
 		Node d = new Node(8,5);
-		search(s, d);
+		search2(s, d);
 	}
 
 }

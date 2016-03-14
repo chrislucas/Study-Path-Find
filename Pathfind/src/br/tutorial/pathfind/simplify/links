@@ -15,3 +15,21 @@ http://16bitsflag.blogspot.com.br/2012/09/a-implementation-for-grids-in-c.html
 http://stackoverflow.com/questions/1332466/how-does-dijkstras-algorithm-and-a-star-compare
 http://julian.togelius.com/mariocompetition2009/
 https://github.com/bgrins/javascript-astar/blob/master/astar.js
+
+A * search
+importante leitura
+http://theory.stanford.edu/~amitp/GameProgramming/AStarComparison.html
+
+Pathfinding
+https://www.raywenderlich.com/4946/introduction-to-a-pathfinding
+https://www.raywenderlich.com/4970/how-to-implement-a-pathfinding-with-cocos2d-tutorial
+
+
+Pagina com comentarios interessantes
+http://www.redblobgames.com/pathfinding/a-star/introduction.html
+http://www.redblobgames.com/pathfinding/a-star/implementation.html
+
+Best First Search
+http://courses.cs.washington.edu/courses/cse326/03su/homework/hw3/bestfirstsearch.html
+
+http://www.cs.bham.ac.uk/~rwd/IAI/Week3.pdf
